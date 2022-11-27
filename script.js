@@ -42,6 +42,17 @@ popupUpdWr.querySelector(".popup__close").addEventListener("click", () => {
     updForm.dataset.id = "";
 });
 
+fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show`)
+    .then(res => res.json())
+    .then(result => {
+        if(result.message === "ok") {
+            // console.log(result.data);
+            result.data.forEach((el) => {
+                createCard(el, container);
+            })
+        }
+    })
+
 const createInfoCard = (cat, parent) => {
     const cardInfo = document.createElement("div");
     cardInfo.className ="cardInfo";
@@ -54,7 +65,7 @@ const createInfoCard = (cat, parent) => {
     if(cat.img_link) {
         infoImg.style.backgroundImage = `url(${cat.img_link})`;
     } else {
-        infoImg.style.backgroundImage = "url(https://github.com/jennyfil/CuteCats/blob/main/img/NoCat.jpg)";
+        infoImg.style.backgroundImage = "url(img/NoCat.jpg)";
         infoImg.style.backgroundSize = "contain";
         infoImg.style.backgroundColor = "transparent";
     }
@@ -159,7 +170,7 @@ const createCard = (cat, parent) => {
     if(cat.img_link) {
         img.style.backgroundImage = `url(${cat.img_link})`;
     } else {
-        img.style.backgroundImage = "url(https://github.com/jennyfil/CuteCats/blob/main/img/NoCat.jpg)";
+        img.style.backgroundImage = "url(img/NoCat.jpg)";
         img.style.backgroundSize = "contain";
         img.style.backgroundColor = "transparent";
     }
@@ -198,16 +209,16 @@ const showCat = (cat) => {
 }
 
 
-fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show`)
-    .then(res => res.json())
-    .then(result => {
-        if(result.message === "ok") {
-            // console.log(result.data);
-            result.data.forEach((el) => {
-                createCard(el, container);
-            })
-        }
-    })
+// fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show`)
+//     .then(res => res.json())
+//     .then(result => {
+//         if(result.message === "ok") {
+//             // console.log(result.data);
+//             result.data.forEach((el) => {
+//                 createCard(el, container);
+//             })
+//         }
+//     })
 
 
 const deleteCat = (id, tag) => {
@@ -297,7 +308,7 @@ const updCard = (data, id) => {
 		let card = cards[i];
 
 		if (card.dataset.id === id) {
-			card.querySelector(".card__img").style.backgroundImage = data.img_link ? `url(${data.img_link})` : `url(https://github.com/jennyfil/CuteCats/blob/main/img/NoCat.jpg)`;
+			card.querySelector(".card__img").style.backgroundImage = data.img_link ? `url(${data.img_link})` : `url(img/NoCat.jpg)`;
             card.querySelector("h3").innerText = data.name || "noname";
 		}
 	}
@@ -309,7 +320,7 @@ const updInfoCard = (data, id) => {
         // console.log(card);
 		if (card.dataset.id === id) {
 
-			card.querySelector(".card__img").style.backgroundImage = data.img_link ? `url(${data.img_link})` : `url(https://github.com/jennyfil/CuteCats/blob/main/img/NoCat.jpg)`;
+			card.querySelector(".card__img").style.backgroundImage = data.img_link ? `url(${data.img_link})` : `url(img/NoCat.jpg)`;
             card.querySelector("h2").innerText = data.name || "noname";
 
             let currentAge;
