@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>CuteCats</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <a href="index.html">
+                <div class="header__logo">
+                    <i class="fa-solid fa-cat"></i>
+                    <div class="header__title-logo">Cute Cats</div>
+                </div> <!--header__logo-->
+            </a>
+            <nav>
+                <a href="" id="user">
+                    <div class="header__menu">Новый пользователь</div>
+                </a>
+                <a id = "addCat" href="#">
+                    <div class="header__menu">Добавить кота</div>
+                </a>
+            </nav>
+        </header>
+    
+        <main class="card-wrapper">
+
+        <!--<div class="card">
+                <div class = "card__fav">U+1F49C</div>
+                <div class="card__img"></div>
+                <h3></h3>
+                <button class="btn"></button>
+            </div> -->
+            
+        </main>
+    
+        <footer>&#169; Copyright, JennyFil, 2022 г.</footer>
+    </div> <!-- wrapper -->
+
+    <div id = "popupAdd-wrapper" class="popup-wrapper">
+        <div class="popupAdd">
+            <div class="popup__close"></div>
+            <div class="popup__content">
+                <form id = "addCatForm">
+                    <label>
+                        Введите имя
+                        <div class="form-input">
+                            <input class = "input" required placeholder="Имя" name="name" type="text">
+                        </div>
+                    </label>
+        
+                    <label>
+                        Введите номер
+                        <div class="form-input">
+                            <input class = "input" required placeholder="Номер" name="id" type="number">
+                        </div>
+                    </label>
+        
+                    <label>
+                        Введите возраст
+                        <div class="form-input">
+                            <input class = "input" placeholder="Возраст" name="age" type="number" min="0">
+                        </div>
+                    </label>
+        
+                    <label>
+                        Рейтинг от 1 до 10
+                        <div class="form-input">
+                            <input class = "input" placeholder="Рейтинг" name="rate" type="number" min="0" max="10">
+                        </div>
+                    </label>
+        
+                    <label>
+                        <input name="favourite" type="checkbox">
+                        Любимчик
+                    </label>
+                    
+                    <label>
+                        Фотография
+                        <div class="form-input">
+                            <input class = "input" placeholder="Ссылка на фотографию" name="img_link"  type="text">
+                        </div>
+                    </label>
+    
+                    <label>
+                        Расскажите о котике
+                        <div class="form-input">
+                            <textarea placeholder="Описание кота" name="description"></textarea>
+                        </div>
+                    </label>
+        
+                    <button class="btn" type = "submit">Добавить</button>
+                </form>
+            </div> <!-- popup__content --> 
+        </div>
+    </div> <!-- popupAdd wrapper -->
+
+    <div id = "popupInfo-wrapper" class="popup-wrapper">
+        <div class="popupInfo">
+            <div id = "popup__closeInfo" class="popup__close"></div>
+            <div id = "popup__infoContent" class="popup__content infoContent">
+            <!-- <div class="cardInfo">
+                    <div class="catImg"></div>
+                    <div class="catInfo">
+                        <h2>Имя</h2>
+                        <h3>года</h3>
+                        <div class = "rateInfo">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>   
+                        </div>
+                        <p class="catDescription"></p>
+                        <button class = "btn change-btn"></button>
+                    </div>
+                </div> -->
+             </div>  <!-- popup__infoContent -->
+        </div>
+    </div> <!-- popupInfo wrapper-->
+
+    <div id = "popupUpd-wrapper" class="popup-wrapper">
+        <div class="popupUpd">
+            <div class="popup__close"></div>
+            <div class="popup__content">
+                <form id = "updCatForm">
+                    <label>
+                        Имя кота
+                        <div class="form-input">
+                            <input class = "input" placeholder="Имя" name="name" type="text">
+                        </div>
+                    </label>
+                    <label>
+                        Номер кота
+                        <div class="form-input">
+                            <input readonly class = "input" placeholder="Номер" name="id" type="number">
+                        </div>
+                    </label>
+                    <label>
+                        Возраст
+                        <div class="form-input">
+                            <input class = "input" placeholder="Возраст" name="age" type="number" min="0">
+                        </div>
+                    </label>
+        
+                    <label>
+                        Рейтинг от 0 до 10
+                        <div class="form-input">
+                            <input class = "input" placeholder="Рейтинг" name="rate" type="number" min="1" max="10">
+                        </div>
+                    </label>
+        
+                    <label>
+                        <input name="favourite" type="checkbox">
+                        Любимчик
+                    </label>
+                    
+                    <label>
+                        Новая фотография
+                        <div class="form-input">
+                            <input class = "input" placeholder="Ссылка на фотографию" name="img_link"  type="text">
+                        </div>
+                    </label>
+    
+                    <label>
+                        Изменить описание котика
+                        <div class="form-input">
+                            <textarea placeholder="Описание кота" name="description"></textarea>
+                        </div>
+                    </label>
+        
+                    <button class="btn" type = "submit">Изменить</button>
+                </form>
+            </div> <!-- popup__content -->
+        </div>
+    </div> <!-- popupUpd wrapper-->
+    <script src="script.js"></script>
+</body>
+</html>
