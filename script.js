@@ -211,7 +211,7 @@ fetch(`http://sb-cats.herokuapp.com/api/2/${user}/show`)
 
 
 const deleteCat = (id, tag) => {
-    fetch(`https://sb-cats.herokuapp.com/api/2/${user}/delete/${id}`, {
+    fetch(`http://sb-cats.herokuapp.com/api/2/${user}/delete/${id}`, {
         method: "DELETE"
     })
     .then(res => res.json())
@@ -224,7 +224,7 @@ const deleteCat = (id, tag) => {
 }
 
 const addCat = (cat) => {
-	fetch(`https://sb-cats.herokuapp.com/api/2/${user}/add`, {
+	fetch(`http://sb-cats.herokuapp.com/api/2/${user}/add`, {
 		method: "POST",
 		headers: { 
 			"Content-Type": "application/json"
@@ -258,7 +258,7 @@ addForm.addEventListener("submit", (e) => {
 });
 
 const updCat = (cat, id) => {
-	fetch(`https://sb-cats.herokuapp.com/api/2/${user}/update/${id}`, {
+	fetch(`http://sb-cats.herokuapp.com/api/2/${user}/update/${id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
