@@ -42,7 +42,7 @@ popupUpdWr.querySelector(".popup__close").addEventListener("click", () => {
     updForm.dataset.id = "";
 });
 
-fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show`)
+fetch(`https://srv.petiteweb.dev/api/2/${user}/show`)
     .then(res => res.json())
     .then(result => {
         if(result.message === "ok") {
@@ -199,7 +199,7 @@ const createCard = (cat, parent) => {
 }
 
 const showCat = (cat) => {
-    fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show/${cat.id}`)
+    fetch(`https://srv.petiteweb.dev/api/2/${user}/show/${cat.id}`)
     .then(res => res.json())
     .then(data => {
         if(data.message === "ok") {
@@ -209,7 +209,7 @@ const showCat = (cat) => {
 }
 
 
-// fetch(`https://sb-cats.herokuapp.com/api/2/${user}/show`)
+// fetch(`https://srv.petiteweb.dev/api/2/${user}/show`)
 //     .then(res => res.json())
 //     .then(result => {
 //         if(result.message === "ok") {
@@ -222,7 +222,7 @@ const showCat = (cat) => {
 
 
 const deleteCat = (id, tag) => {
-    fetch(`https://sb-cats.herokuapp.com/api/2/${user}/delete/${id}`, {
+    fetch(`https://srv.petiteweb.dev/api/2/${user}/delete/${id}`, {
         method: "DELETE"
     })
     .then(res => res.json())
@@ -235,7 +235,7 @@ const deleteCat = (id, tag) => {
 }
 
 const addCat = (cat) => {
-	fetch(`https://sb-cats.herokuapp.com/api/2/${user}/add`, {
+	fetch(`https://srv.petiteweb.dev/api/2/${user}/add`, {
 		method: "POST",
 		headers: { 
 			"Content-Type": "application/json"
@@ -269,7 +269,7 @@ addForm.addEventListener("submit", (e) => {
 });
 
 const updCat = (cat, id) => {
-	fetch(`https://sb-cats.herokuapp.com/api/2/${user}/update/${id}`, {
+	fetch(`https://srv.petiteweb.dev/api/2/${user}/update/${id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
