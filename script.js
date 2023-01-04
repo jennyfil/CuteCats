@@ -6,7 +6,6 @@ const popupInfoWr = document.querySelector("#popupInfo-wrapper");
 const infoContent = document.querySelector("#popup__infoContent");
 
 const updCatForm = document.querySelector("#updCatForm");
-
 const addForm = document.forms.addCatForm;
 const updForm = document.forms.updCatForm;
 
@@ -14,7 +13,9 @@ const infoCards = document.getElementsByClassName("cardInfo");
 const cards = document.getElementsByClassName("card");
 
 document.getElementById("user").addEventListener("click", () => {
-	localStorage.removeItem("catUser");
+	// localStorage.removeItem("catUser");
+    user = prompt("Представьтесь, пожалуйста")
+	localStorage.setItem("catUser", user);
 });
 
 let user = localStorage.getItem("catUser");
@@ -22,6 +23,7 @@ if (!user) {
 	user = prompt("Представьтесь, пожалуйста")
 	localStorage.setItem("catUser", user);
 }
+
 
 document.querySelector("#addCat").addEventListener("click", (e) => {
 	e.preventDefault();
@@ -46,7 +48,6 @@ fetch(`https://srv.petiteweb.dev/api/2/${user}/show`)
     .then(res => res.json())
     .then(result => {
         if(result.message === "ok") {
-            // console.log(result.data);
             result.data.forEach((el) => {
                 createCard(el, container);
             })
@@ -125,10 +126,8 @@ const createInfoCard = (cat, parent) => {
 }
 
 const showForm = (data) => {
-	// console.log(data);
 	for (let i = 0; i < updForm.elements.length; i++) {
 		let el = updForm.elements[i];
-        // console.log(el.name);
 		if (el.name) {
 			if (el.type !== "checkbox") {
 				el.value = data[el.name] ? data[el.name] : "";
@@ -208,26 +207,12 @@ const showCat = (cat) => {
     })
 }
 
-
-// fetch(`https://srv.petiteweb.dev/api/2/${user}/show`)
-//     .then(res => res.json())
-//     .then(result => {
-//         if(result.message === "ok") {
-//             // console.log(result.data);
-//             result.data.forEach((el) => {
-//                 createCard(el, container);
-//             })
-//         }
-//     })
-
-
 const deleteCat = (id, tag) => {
     fetch(`https://srv.petiteweb.dev/api/2/${user}/delete/${id}`, {
         method: "DELETE"
     })
     .then(res => res.json())
     .then(data => {
-        // console.log(data);
         if (data.message === "ok") {
             tag.remove();
         }
@@ -244,7 +229,6 @@ const addCat = (cat) => {
 	})
     .then(res => res.json())
     .then(data => {
-        // console.log(data);
         if (data.message === "ok") {
             createCard(cat, container);
             addForm.reset();
@@ -259,12 +243,10 @@ addForm.addEventListener("submit", (e) => {
 
 	for (let i = 0; i < addForm.elements.length; i++) {
 		let el = addForm.elements[i];
-		// console.log(el);
 		if (el.name) {
 			body[el.name] = el.name === "favourite" ? el.checked : el.value;
 		}
 	}
-	// console.log(body);
 	addCat(body);
 });
 
@@ -298,7 +280,6 @@ updForm.addEventListener("submit", (e) => {
 		}
 	}
 	delete body.id;
-	// console.log(body);
 	updCat(body, updForm.dataset.id);
     popupUpdWr.classList.remove("active");
 });
@@ -317,7 +298,6 @@ const updCard = (data, id) => {
 const updInfoCard = (data, id) => {
 	for (let i = 0; i < infoCards.length; i++) {
 		let card = infoCards[i];
-        // console.log(card);
 		if (card.dataset.id === id) {
 
 			card.querySelector(".card__img").style.backgroundImage = data.img_link ? `url(${data.img_link})` : `url(img/NoCat.jpg)`;
